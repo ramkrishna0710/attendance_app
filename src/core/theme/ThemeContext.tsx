@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useMemo, useState, useEffect } from 'react';
-import { useColorScheme } from 'react-native';
+import { Appearance, ColorSchemeName } from 'react-native';
 import { AppColors, DarkColors, LightColors } from './app_theme';
 
 type ThemeMode = 'light' | 'dark' | 'system';
@@ -14,12 +14,26 @@ interface ThemeContextValue {
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const systemScheme = useColorScheme();
     const [mode, setMode] = useState<ThemeMode>('system');
+    const [systemScheme, setSystemScheme] = useState<ColorSchemeName>(
+        Appearance.getColorScheme()
+    );
+
+    console.log('Current system color scheme:', systemScheme);
+
+    useEffect(() => {
+        const sub = Appearance.addChangeListener(({ colorScheme }) => {
+            setSystemScheme(colorScheme);
+        });
+        return () => sub.remove();
+    }, []);
 
     const isDark = mode === 'dark' || (mode === 'system' && systemScheme === 'dark');
 
-    const colors = useMemo(() => (isDark ? DarkColors : LightColors), [isDark]);
+    const colors = useMemo(
+        () => (isDark ? DarkColors : LightColors),
+        [isDark]
+    );
 
     const value = useMemo(
         () => ({

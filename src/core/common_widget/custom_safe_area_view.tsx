@@ -1,6 +1,8 @@
-import { View, ViewStyle, StyleSheet, SafeAreaView } from 'react-native';
+import { View, ViewStyle, StyleSheet } from 'react-native';
 import React, { FC, ReactNode } from 'react';
 import { useTheme } from '../theme/ThemeContext';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar } from 'expo-status-bar';
 
 interface CustomSafeAreaViewProps {
   children: ReactNode;
@@ -23,6 +25,7 @@ const CustomSafeAreaView: FC<CustomSafeAreaViewProps> = ({
         style,
       ]}
     >
+      <StatusBar style="auto" />
       <SafeAreaView />
       {children}
     </View>

@@ -7,7 +7,6 @@ const App = () => {
   return (
     <ThemeProvider>
       <AppNavigator/>
-      {/* <RootLayout/> */}
     </ThemeProvider>
   )
 }
