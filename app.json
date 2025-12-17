@@ -25,6 +25,20 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Okra-Bold.ttf",
+            "./assets/fonts/Okra-ExtraBold.ttf",
+            "./assets/fonts/Okra-Medium.ttf",
+            "./assets/fonts/Okra-MediumLight.ttf",
+            "./assets/fonts/Okra-Regular.ttf"
+          ]
+        }
+      ]
+    ]
   }
 }
