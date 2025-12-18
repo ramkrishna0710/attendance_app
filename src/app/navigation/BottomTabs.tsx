@@ -30,10 +30,10 @@ export default function BottomTabs() {
     activeIcon: string;
     inactiveIcon: string;
   }[] = [
-      { name: 'Home', iconFamily: 'Ionicons', activeIcon: 'home', inactiveIcon: 'home-outline' },
+      { name: 'Scedule', iconFamily: 'Ionicons', activeIcon: 'list', inactiveIcon: 'list-outline' },
       { name: 'Calender', iconFamily: 'Ionicons', activeIcon: 'calendar', inactiveIcon: 'calendar-outline' },
       { name: 'CheckInOut', iconFamily: 'MaterialIcons', activeIcon: 'touch-app', inactiveIcon: 'touch-app' },
-      { name: 'Scedule', iconFamily: 'Ionicons', activeIcon: 'list', inactiveIcon: 'list-outline' },
+      { name: 'Home', iconFamily: 'MaterialIcons', activeIcon: 'category', inactiveIcon: 'category' },
       { name: 'Profile', iconFamily: 'MaterialIcons', activeIcon: 'person', inactiveIcon: 'person-outline' },
     ];
 
@@ -91,13 +91,14 @@ export default function BottomTabs() {
 
   return (
     <Tab.Navigator
+      initialRouteName="CheckInOut"
       screenOptions={{ headerShown: false }}
       tabBar={(props) => <CustomTabBar {...props} />}
     >
-      <Tab.Screen name="Home" options={{ animation: 'shift' }} component={HomeScreen} />
+      <Tab.Screen name="Scedule" options={{ animation: 'shift' }} component={TodaySceduleScreen} />
       <Tab.Screen name="Calender" options={{ animation: 'shift' }} component={WorkReportScreen} />
       <Tab.Screen name="CheckInOut" options={{ animation: 'shift' }} component={CheckInOutScreen} />
-      <Tab.Screen name="Scedule" options={{ animation: 'shift' }} component={TodaySceduleScreen} />
+      <Tab.Screen name="Home" options={{ animation: 'shift' }} component={HomeScreen} />
       <Tab.Screen name="Profile" options={{ animation: 'shift' }} component={ProfileScreen} />
     </Tab.Navigator>
   );
@@ -116,8 +117,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   dot: {
-    width: 8,
-    height: 8,
+    width: 6,
+    height: 6,
     borderRadius: 3,
     marginTop: 4,
   },

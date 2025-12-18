@@ -3,7 +3,7 @@ import React from 'react'
 
 const WorkReportScreen = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text>WorkReportScreen</Text>
     </View>
   )
@@ -11,4 +11,10 @@ const WorkReportScreen = () => {
 
 export default WorkReportScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+})

@@ -9,7 +9,7 @@ const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 export const screenWidth = SCREEN_WIDTH;
 export const screenHeight = SCREEN_HEIGHT;
 
-export const BOTTOM_TAB_HEIGHT = 60;
+export const BOTTOM_TAB_HEIGHT = 45;
 export const isBannerHeight = SCREEN_HEIGHT * 0.4;
 
 const MIN_HEIGHT = 700;
