@@ -55,7 +55,7 @@ const TodaysPlanWidget = () => {
                         cx={size / 2}
                         cy={size / 2}
                         r={radius}
-                        strokeWidth={strokeWidth - 3}
+                        strokeWidth={strokeWidth - 3.5}
                     />
 
                     <Circle

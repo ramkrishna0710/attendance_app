@@ -8,6 +8,7 @@ import CustomText from '../../../../core/common_widget/custom_text'
 import { rf } from '../../../../core/utils/size'
 import { useTheme } from '../../../../core/theme/ThemeContext'
 import TodaysSceduleWidget from './widget/todays_scedule_widget'
+import { navigate } from '../../../../core/utils/NavigationUtils'
 
 const HomeScreen = () => {
   const { colors } = useTheme();
@@ -29,7 +30,9 @@ const HomeScreen = () => {
 
         <Spacer h={8} />
 
-        <TodaysSceduleWidget />
+        <TodaysSceduleWidget onViewMore={() => {
+          navigate('Scedule', { isAll: true });
+        }} />
       </ScrollView>
     </CustomSafeAreaView>
   )
