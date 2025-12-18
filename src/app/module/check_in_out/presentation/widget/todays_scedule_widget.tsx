@@ -2,10 +2,10 @@ import React, { useMemo } from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import CustomText from '../../../../../core/common_widget/custom_text';
 import { useTheme } from '../../../../../core/theme/ThemeContext';
-import { fakeScheduleJson } from '../../data/dummyData';
 import CachedImage from '../../../../../core/common_widget/cache_image';
 import { screenHeight } from '../../../../../core/utils/size';
 import Spacer from '../../../../../core/common_widget/spacer';
+import { fakeScheduleJson } from '../../data/dummyData';
 
 interface Props {
     isAll?: boolean;
@@ -47,6 +47,7 @@ const TodaysScheduleWidget: React.FC<Props> = ({
                     { backgroundColor: item.bgColor },
                 ]}
             >
+                {!hasImage && <Spacer h={6} />}
                 <View style={{
                     alignItems: hasImage ? 'flex-start' : 'center',
                     justifyContent: hasImage ? 'flex-start' : 'center',
@@ -75,10 +76,11 @@ const TodaysScheduleWidget: React.FC<Props> = ({
                 </View>
 
                 <Spacer h={6} />
+                {!hasImage && <Spacer h={6} />}
 
                 {hasImage && (
                     <>
-                        <Spacer h={6} />
+                        <Spacer h={7} />
                         <CachedImage
                             uri={item.meetingImg}
                             height={screenHeight * 0.15}
@@ -147,7 +149,7 @@ const styles = StyleSheet.create({
     },
 
     card: {
-        margin: 8,
+        margin: 4,
         padding: 12,
         borderRadius: 12,
         shadowColor: '#000',
@@ -160,5 +162,6 @@ const styles = StyleSheet.create({
     viewMoreCard: {
         alignItems: 'center',
         justifyContent: 'center',
+        paddingVertical: 18,
     },
 });

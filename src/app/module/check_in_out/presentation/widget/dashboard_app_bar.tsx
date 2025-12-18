@@ -9,7 +9,7 @@ interface AppBarProps {
     isNotifications?: boolean;
 }
 
-const AppBar: FC<AppBarProps> = ({ isNotifications = false }) => {
+const DashboardAppBar: FC<AppBarProps> = ({ isNotifications = false }) => {
     const { colors } = useTheme();
 
     return (
@@ -46,7 +46,7 @@ const AppBar: FC<AppBarProps> = ({ isNotifications = false }) => {
     );
 };
 
-export default AppBar;
+export default DashboardAppBar;
 
 const styles = StyleSheet.create({
     appBarContainer: {

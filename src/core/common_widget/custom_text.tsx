@@ -1,4 +1,4 @@
-import { View, Text, TextStyle, Platform, StyleSheet } from 'react-native'
+import { View, Text, TextStyle, Platform, StyleSheet, StyleProp } from 'react-native'
 import React, { FC } from 'react'
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useTheme } from '../theme/ThemeContext';
@@ -12,7 +12,7 @@ interface CustomTextProps {
     fontFamily?: "Okra-Bold" | "Okra-Regular" | "Okra-ExtraBold" | "Okra-MediumLight" | "Okra-Medium";
     fontSize?: number;
     color?: string;
-    style?: TextStyle | TextStyle[];
+    style?: TextStyle | StyleProp<TextStyle>;
     children?: React.ReactNode;
     numberOfLines?: number;
     onLayout?: (event: any) => void;

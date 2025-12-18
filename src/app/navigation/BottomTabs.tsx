@@ -5,11 +5,11 @@ import Icon from '../../core/common_widget/Icon';
 import HomeScreen from '../module/home/presentation/home_screen';
 import ProfileScreen from '../module/profile/presentation/profile_screen';
 import WorkReportScreen from '../module/calender/work_report_screen';
-import CheckInOutScreen from '../module/check_in_out/check_in_out_screen';
 import TodaySceduleScreen from '../module/scedule/today_scedule_screen';
 import { useTheme } from '../../core/theme/ThemeContext';
-import { BOTTOM_TAB_HEIGHT, rf } from '../../core/utils/size';
+import { BOTTOM_TAB_HEIGHT, rf, screenWidth } from '../../core/utils/size';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import CheckInOutScreen from '../module/check_in_out/presentation/check_in_out_screen';
 
 export type RootTabParamList = {
   Home: undefined;
@@ -58,9 +58,9 @@ export default function BottomTabs() {
               style={[
                 styles.tabButton,
                 tab.name === 'CheckInOut' && {
-                  width: 80,
-                  height: 80,
-                  borderRadius: 40,
+                  width: screenWidth * 0.2,
+                  height: screenWidth * 0.2,
+                  borderRadius: screenWidth * 0.22 / 2,
                   backgroundColor: colors.primary,
                   borderColor: colors.border,
                   borderWidth: 1,
