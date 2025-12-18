@@ -16,20 +16,20 @@ export const fakeScheduleJson = [
     id: '3',
     title: 'Create a\nplan for business',
     time: '11:00 - 12:00',
-    bgColor: '#FFFFFF',
+    bgColor: '#f5cceeff',
     meetingImg: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqqgJ4Ge9V43HxZtOVJESQ7wKAXdlgkUmrqkpSIONjsLKKlHf7kIX6vFV64qqavAri7d6vNa174F0_mJolEvvXcCXZpXIP3_78CHjutSUSuA&s=10',
   },
   {
     id: '4',
     title: 'Product\nreview',
     time: '02:00 - 03:00',
-    bgColor: '#FFFFFF',
+    bgColor: '#c28383ff',
   },
   {
     id: '5',
     title: 'Team\nDoctos',
     time: '04:00 - 04:30',
-    bgColor: '#FFFFFF',
+    bgColor: '#79b8c0ff',
     meetingImg: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb0FFJpx7m90YAumh--f-pM5CTcCg_WQ9uMOoLsAWG27jsJGVOQOaQ-zjtQbh4M-aSOgpSlGeMRBjbLZy3PoBpBMKoCFlIUcHqD7EUj2xGpA&s=10',
   },
   {

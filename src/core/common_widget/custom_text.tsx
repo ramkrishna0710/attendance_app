@@ -20,32 +20,32 @@ interface CustomTextProps {
 
 const fontSizeMap: Record<Varient, Record<PlatFormType, number>> = {
     h1: {
-        android: rf(24),
-        ios: rf(22)
+        android: 24,
+        ios: 22
     },
     h2: {
         android: 22,
-        ios: rf(20)
+        ios: 20
     },
     h3: {
         android: 20,
-        ios: rf(18)
+        ios: 18
     },
     h4: {
-        android: rf(18),
-        ios: rf(16)
+        android: 18,
+        ios: 16
     },
     h5: {
-        android: rf(16),
-        ios: rf(14)
+        android: 16,
+        ios: 14
     },
     h6: {
-        android: rf(12),
-        ios: rf(10)
+        android: 12,
+        ios: 10
     },
     h7: {
-        android: rf(10),
-        ios: rf(9)
+        android: 10,
+        ios: 9
     }
 }
 

@@ -19,8 +19,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         Appearance.getColorScheme()
     );
 
-    console.log('Current system color scheme:', systemScheme);
-
     useEffect(() => {
         const sub = Appearance.addChangeListener(({ colorScheme }) => {
             setSystemScheme(colorScheme);

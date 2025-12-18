@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useTheme } from '../../../../core/theme/ThemeContext';
 import Icon from '../../../../core/common_widget/Icon';
 import InputTextField from '../../../../core/common_widget/input_text_field';
@@ -10,6 +10,7 @@ import { heightBox } from '../../../../core/utils/size';
 import Spacer from '../../../../core/common_widget/spacer';
 import CommonButton from '../../../../core/common_widget/custom_button';
 import { push } from '../../../../core/utils/NavigationUtils';
+import CustomText from '../../../../core/common_widget/custom_text';
 
 const LoginScreen = () => {
     const { colors } = useTheme();

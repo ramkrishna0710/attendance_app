@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect, useMemo } from 'react';
-import { View, StyleSheet, ViewStyle, ImageStyle, Text } from 'react-native';
+import { View, StyleSheet, ViewStyle, ImageStyle, Text, TextStyle } from 'react-native';
 import {
   Image,
   type ImageContentFit,
@@ -19,6 +19,7 @@ export interface CachedImageProps {
   borderRadius?: number;
   errorWidget?: React.ReactNode;
   fadeInDuration?: number;
+  style?: TextStyle | TextStyle[];
   placeholderSource?: ImageSource | ImageSource[] | string | string[];
 }
 
@@ -35,6 +36,7 @@ const CachedImage: FC<CachedImageProps> = ({
   errorWidget,
   fadeInDuration = 300,
   placeholderSource,
+  style,
 }) => {
   const { colors } = useTheme();
   const [hasError, setHasError] = useState(false);
@@ -62,7 +64,7 @@ const CachedImage: FC<CachedImageProps> = ({
   };
 
   return (
-    <View style={[styles.wrapper, containerStyle]}>
+    <View style={[styles.wrapper, containerStyle, style]}>
       {!hasError && (
         <Image
           source={{ uri: finalUri }}
