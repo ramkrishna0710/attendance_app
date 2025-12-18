@@ -8,6 +8,8 @@ import CachedImage from '../../../../core/common_widget/cache_image';
 import CustomSafeAreaView from '../../../../core/common_widget/custom_safe_area_view';
 import { heightBox } from '../../../../core/utils/size';
 import Spacer from '../../../../core/common_widget/spacer';
+import CommonButton from '../../../../core/common_widget/custom_button';
+import { push } from '../../../../core/utils/NavigationUtils';
 
 const LoginScreen = () => {
     const { colors } = useTheme();
@@ -71,6 +73,15 @@ const LoginScreen = () => {
                 maxLines={1}
                 labelText='Password'
                 hintText='Enter your password'
+            />
+
+            <Spacer h={20} />
+
+            <CommonButton
+                btnText='Log In'
+                onPress={() => {
+                    push('MainTabs')
+                }}
             />
 
         </CustomSafeAreaView>

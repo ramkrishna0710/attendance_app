@@ -11,7 +11,7 @@ interface IconProps {
   color?: string;
   size?: number;
   iconFamily: 'Ionicons' | 'MaterialIcons' | 'MaterialCommunityIcons';
-  name: IoniconName | MaterialIconName | MaterialCommunityIconName;
+  name: string;
 }
 
 const Icon: FC<IconProps> = ({ color, size = 24, name, iconFamily }) => {

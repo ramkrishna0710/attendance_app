@@ -1,4 +1,5 @@
 import { Dimensions, PixelRatio } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 export const baseHeight = 852;
 export const baseWidth = 393;
@@ -27,3 +28,5 @@ const round = (value: number): number => PixelRatio.roundToNearestPixel(value);
 export const heightBox = (value: number): number => round(value * heightScale());
 
 export const widthBox = (value: number): number => round(value * widthScale());
+
+export const rf = (size: number) => RFValue(size);

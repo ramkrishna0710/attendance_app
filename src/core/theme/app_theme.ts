@@ -9,7 +9,7 @@ export const LightColors = {
     background_light: '#F4F6FC',
     border: '#E5E9EF',
     lightText: '#9197A6',
-    active: '#019A51',
+    active: '#1a5c3cff',
     dark: '#18171C',
 };
 
