@@ -18,7 +18,8 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function SplashScreenWrapper() {
   useEffect(() => {
     const timer = setTimeout(() => {
-      replace('LoginScreen');
+      // replace('LoginScreen');
+      replace('MainTabs');
     }, 3000);
 
     return () => clearTimeout(timer);

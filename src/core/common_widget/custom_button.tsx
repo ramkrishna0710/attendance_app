@@ -5,6 +5,8 @@ import {
   StyleSheet,
   ViewStyle,
   DimensionValue,
+  TextStyle,
+  StyleProp,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { RFValue } from 'react-native-responsive-fontsize';
@@ -39,6 +41,8 @@ interface CommonButtonProps {
   iconName?: string;
   iconFamily?: IconFamily;
   iconColor?: string;
+  style?: TextStyle | StyleProp<TextStyle>;
+  fontStyles?: TextStyle | StyleProp<TextStyle>;
 
   gradientColors?: readonly [string, string, ...string[]];
 }
@@ -47,24 +51,21 @@ const CommonButton: FC<CommonButtonProps> = ({
   btnText,
   btnTextSize = RFValue(14),
   onPress,
-
   height = 48,
   width = '100%',
   borderRadius = 12,
-
   bgColor,
   borderColor,
   textColor,
-
   suffixIconName,
   suffixIconFamily = 'MaterialCommunityIcons',
   suffixIconColor,
   suffixIconSize = RFValue(16),
-
   iconName,
   iconFamily = 'MaterialIcons',
   iconColor,
-
+  style,
+  fontStyles,
   gradientColors,
 }) => {
   const { colors } = useTheme();
@@ -107,7 +108,7 @@ const CommonButton: FC<CommonButtonProps> = ({
           varient="h3"
           fontFamily="Okra-Bold"
           fontSize={btnTextSize}
-          style={{ fontWeight: 'bold' }}
+          style={[fontStyles]}
         >
           {btnText}
         </CustomText>
@@ -128,7 +129,7 @@ const CommonButton: FC<CommonButtonProps> = ({
   );
 
   return (
-    <View style={styles.wrapper}>
+    <View style={[styles.wrapper, style]}>
       {showGradient ? (
         <LinearGradient
           colors={gradientColors ?? defaultGradient}

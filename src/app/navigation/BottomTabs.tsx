@@ -4,12 +4,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from '../../core/common_widget/Icon';
 import HomeScreen from '../module/home/presentation/home_screen';
 import ProfileScreen from '../module/profile/presentation/profile_screen';
-import WorkReportScreen from '../module/calender/work_report_screen';
 import TodaySceduleScreen from '../module/scedule/today_scedule_screen';
 import { useTheme } from '../../core/theme/ThemeContext';
 import { BOTTOM_TAB_HEIGHT, rf, screenWidth } from '../../core/utils/size';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CheckInOutScreen from '../module/check_in_out/presentation/check_in_out_screen';
+import work_report_screen from '../module/work_report/presentation/work_report_screen';
 
 export type RootTabParamList = {
   Home: undefined;
@@ -31,9 +31,9 @@ export default function BottomTabs() {
     inactiveIcon: string;
   }[] = [
       { name: 'Scedule', iconFamily: 'Ionicons', activeIcon: 'list', inactiveIcon: 'list-outline' },
-      { name: 'Calender', iconFamily: 'Ionicons', activeIcon: 'calendar', inactiveIcon: 'calendar-outline' },
-      { name: 'CheckInOut', iconFamily: 'MaterialIcons', activeIcon: 'touch-app', inactiveIcon: 'touch-app' },
       { name: 'Home', iconFamily: 'MaterialIcons', activeIcon: 'category', inactiveIcon: 'category' },
+      { name: 'CheckInOut', iconFamily: 'MaterialIcons', activeIcon: 'touch-app', inactiveIcon: 'touch-app' },
+      { name: 'Calender', iconFamily: 'Ionicons', activeIcon: 'calendar', inactiveIcon: 'calendar-outline' },
       { name: 'Profile', iconFamily: 'MaterialIcons', activeIcon: 'person', inactiveIcon: 'person-outline' },
     ];
 
@@ -64,18 +64,31 @@ export default function BottomTabs() {
                   backgroundColor: colors.primary,
                   borderColor: colors.border,
                   borderWidth: 1,
-                  marginTop: -20,
+                  marginTop: -25,
                   alignItems: 'center',
                   justifyContent: 'center',
                 },
               ]}
             >
+              {tab.name === 'CheckInOut' && !focused &&(
+                <View
+                  pointerEvents="none"
+                  style={{
+                    position: 'absolute',
+                    width: '97%',
+                    height: '97%',
+                    borderRadius: screenWidth * 0.22 / 2,
+                    borderWidth: 4.5,
+                    borderColor: colors.border,
+                  }}
+                />
+              )}
               <View style={{ transform: [{ scale }] }}>
                 <Icon
                   iconFamily={tab.iconFamily}
                   name={focused ? tab.activeIcon : tab.inactiveIcon}
                   size={rf(22)}
-                  color={tab.name === 'CheckInOut' ? '#fff' : color}
+                  color={tab.name === 'CheckInOut' ? colors.background : color}
                 />
               </View>
 
@@ -96,9 +109,9 @@ export default function BottomTabs() {
       tabBar={(props) => <CustomTabBar {...props} />}
     >
       <Tab.Screen name="Scedule" options={{ animation: 'shift' }} component={TodaySceduleScreen} />
-      <Tab.Screen name="Calender" options={{ animation: 'shift' }} component={WorkReportScreen} />
-      <Tab.Screen name="CheckInOut" options={{ animation: 'shift' }} component={CheckInOutScreen} />
       <Tab.Screen name="Home" options={{ animation: 'shift' }} component={HomeScreen} />
+      <Tab.Screen name="CheckInOut" options={{ animation: 'shift' }} component={CheckInOutScreen} />
+      <Tab.Screen name="Calender" options={{ animation: 'shift' }} component={work_report_screen} />
       <Tab.Screen name="Profile" options={{ animation: 'shift' }} component={ProfileScreen} />
     </Tab.Navigator>
   );
