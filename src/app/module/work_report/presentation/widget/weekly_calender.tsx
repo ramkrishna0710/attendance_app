@@ -81,10 +81,10 @@ const WeeklyCalender = () => {
                 activeOpacity={0.8}
                 onPress={() => setSelectedDate(item.day)}
             >
-                <CustomText fontFamily='Okra-Medium' style={styles.weekText}>{item.weekday}</CustomText>
+                <CustomText fontFamily='Okra-Medium' style={[styles.weekText, { color: colors.background }]}>{item.weekday}</CustomText>
                 <Spacer h={6} />
                 <View style={[styles.dateCircle, isSelected && { backgroundColor: colors.primary }]}>
-                    <CustomText fontFamily={isSelected ? 'Okra-Bold' : 'Okra-Medium'} style={styles.dateText}>{item.day}</CustomText>
+                    <CustomText fontFamily={isSelected ? 'Okra-Bold' : 'Okra-Medium'} style={[styles.dateText, { color: colors.background }]}>{item.day}</CustomText>
                 </View>
             </TouchableOpacity>
         );
@@ -146,7 +146,7 @@ const WeeklyCalender = () => {
 
             <Spacer h={25} />
 
-            <CommonButton btnText='Set Remainder' fontStyles={{fontSize: 22}} bgColor={colors.primary} width={'70%'} style={{ alignItems: 'center' }} height={screenHeight * 0.085} borderRadius={screenHeight * 0.085 / 2} />
+            <CommonButton btnText='Set Remainder' fontStyles={{ fontSize: 20 }} bgColor={colors.primary} width={'70%'} style={{ alignItems: 'center' }} height={screenHeight * 0.075} borderRadius={screenHeight * 0.075 / 2} />
         </View>
     )
 }
@@ -174,7 +174,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     weekText: {
-        color: '#fff',
         opacity: 0.8,
         fontSize: 16,
         marginBottom: 6,
@@ -193,7 +192,6 @@ const styles = StyleSheet.create({
         elevation: 4,
     },
     dateText: {
-        color: '#fff',
         fontSize: 16,
         fontWeight: '600',
     },
