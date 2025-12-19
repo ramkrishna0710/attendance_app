@@ -146,7 +146,7 @@ const WeeklyCalender = () => {
 
             <Spacer h={25} />
 
-            <CommonButton btnText='Set Remainder' fontStyles={{ fontSize: 20 }} bgColor={colors.primary} width={'70%'} style={{ alignItems: 'center' }} height={screenHeight * 0.075} borderRadius={screenHeight * 0.075 / 2} />
+            <CommonButton btnText='Set Remainder' fontStyles={{ fontSize: 18 }} bgColor={colors.primary} width={'70%'} style={{ alignItems: 'center' }} height={screenHeight * 0.07} borderRadius={screenHeight * 0.075 / 2} />
         </View>
     )
 }
@@ -157,6 +157,7 @@ const styles = StyleSheet.create({
     calendarContainer: {
         marginTop: 10,
         paddingVertical: 24,
+        paddingHorizontal: 10,
         borderRadius: 30,
     },
     header: {
@@ -167,7 +168,7 @@ const styles = StyleSheet.create({
         marginBottom: 16,
     },
     flatListContent: {
-        // paddingHorizontal: screenWidth / 2 - ITEM_WIDTH / 2,
+        paddingHorizontal: ITEM_WIDTH / 5 - 25,
     },
     dayItem: {
         width: ITEM_WIDTH,
