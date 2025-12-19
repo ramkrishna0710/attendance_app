@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, ToastAndroid, BackHandler } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from '../../core/common_widget/Icon';
 import HomeScreen from '../module/home/presentation/home_screen';
@@ -10,6 +10,8 @@ import { BOTTOM_TAB_HEIGHT, rf, screenWidth } from '../../core/utils/size';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CheckInOutScreen from '../module/check_in_out/presentation/check_in_out_screen';
 import work_report_screen from '../module/work_report/presentation/work_report_screen';
+import { useFocusEffect } from '@react-navigation/native';
+import { navigate, navigationRef } from '../../core/utils/NavigationUtils';
 
 export type RootTabParamList = {
   Home: undefined;
@@ -23,6 +25,49 @@ const Tab = createBottomTabNavigator<RootTabParamList>();
 
 export default function BottomTabs() {
   const { colors } = useTheme();
+
+
+  useFocusEffect(
+    React.useCallback(() => {
+      let backPressCount = 0;
+
+      const onBackPress = () => {
+        const route = navigationRef.getCurrentRoute();
+        const currentTab = route?.name;
+
+        // 🟢 If user is on CheckInOut
+        if (currentTab === 'CheckInOut') {
+          if (backPressCount === 0) {
+            backPressCount++;
+            ToastAndroid.show(
+              'Press back again to exit',
+              ToastAndroid.SHORT
+            );
+
+            setTimeout(() => {
+              backPressCount = 0;
+            }, 2000);
+
+            return true;
+          }
+
+          BackHandler.exitApp();
+          return true;
+        }
+
+        navigate('CheckInOut');
+        return true;
+      };
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () =>
+        BackHandler.addEventListener(
+          'hardwareBackPress',
+          onBackPress
+        );
+    }, [])
+  );
 
   const tabs: {
     name: keyof RootTabParamList;
@@ -70,7 +115,7 @@ export default function BottomTabs() {
                 },
               ]}
             >
-              {tab.name === 'CheckInOut' && !focused &&(
+              {tab.name === 'CheckInOut' && !focused && (
                 <View
                   pointerEvents="none"
                   style={{
@@ -105,6 +150,7 @@ export default function BottomTabs() {
   return (
     <Tab.Navigator
       initialRouteName="CheckInOut"
+      backBehavior="initialRoute"
       screenOptions={{ headerShown: false }}
       tabBar={(props) => <CustomTabBar {...props} />}
     >
