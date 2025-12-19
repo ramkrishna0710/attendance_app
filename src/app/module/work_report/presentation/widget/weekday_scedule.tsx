@@ -9,12 +9,12 @@ const fakeSchedule = [
     { id: '2', title: 'Explore Design App', start: '11:00', end: '12:00', color: '#EAF6F6' },
     { id: '3', title: 'Lunch Break', start: '13:00', end: '14:00', color: '#F3F0FF' },
     { id: '4', title: 'Team Sync Meeting', start: '15:00', end: '16:30', color: '#FFF1F1' },
-    { id: '5', title: 'Project Review', start: '18:00', end: '19:30', color: '#EAF2FF' },
+    { id: '5', title: 'Project Review', start: '17:20', end: '20:00', color: '#EAF2FF' },
 ];
 
 const startHour = 8;
 const endHour = 20;
-const hourHeight = 50; // px per hour
+const hourHeight = 50; 
 
 const WeeklySchedule = () => {
     const { colors } = useTheme();
@@ -52,8 +52,11 @@ const WeeklySchedule = () => {
                         const [endHourNum, endMinuteNum] = event.end.split(':').map(Number);
 
                         const top = (startHourNum - startHour + startMinuteNum / 60) * hourHeight + 8;
-                        const height = (endHourNum - startHourNum + (endMinuteNum - startMinuteNum) / 60) * hourHeight;
-
+                        const height = endHourNum - startHourNum * hourHeight;
+                        // const durationInHours = (endHourNum + endMinuteNum / 60) - (startHourNum + startMinuteNum / 60);
+                        const durationInHours = endHourNum - startHourNum;
+                        console.log('Duration ', durationInHours+1);
+                        
                         return (
                             <View key={event.id} style={[styles.eventWrapper, { top, height }]}>
                                 {index !== 0 && (
@@ -84,7 +87,8 @@ const WeeklySchedule = () => {
                                     <CustomText varient="h6" color={colors.lightText} style={styles.eventTime}>
                                         {event.start} - {event.end}
                                     </CustomText>
-                                    <TeamPreview />
+                                    {durationInHours >= 2 && <TeamPreview />}
+
                                 </View>
                             </View>
                         );
@@ -137,7 +141,7 @@ const styles = StyleSheet.create({
     divider: {
         height: 1,
         width: '100%',
-        opacity: 0.3,
+        opacity: 1.5,
     },
     eventCard: {
         padding: 14,
