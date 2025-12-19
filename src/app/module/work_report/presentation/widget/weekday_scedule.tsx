@@ -8,13 +8,13 @@ const fakeSchedule = [
     { id: '1', title: 'Zoom meet with client from New York', start: '08:00', end: '10:00', color: '#FFE9D6' },
     { id: '2', title: 'Explore Design App', start: '11:00', end: '12:00', color: '#EAF6F6' },
     { id: '3', title: 'Lunch Break', start: '13:00', end: '14:00', color: '#F3F0FF' },
-    { id: '4', title: 'Team Sync Meeting', start: '15:00', end: '16:30', color: '#FFF1F1' },
-    { id: '5', title: 'Project Review', start: '17:20', end: '20:00', color: '#EAF2FF' },
+    { id: '4', title: 'Team Sync Meeting', start: '15:00', end: '16:00', color: '#FFF1F1' },
+    { id: '5', title: 'Project Review', start: '17:00', end: '20:00', color: '#EAF2FF' },
 ];
 
 const startHour = 8;
 const endHour = 20;
-const hourHeight = 50; 
+const hourHeight = 50;
 
 const WeeklySchedule = () => {
     const { colors } = useTheme();
@@ -55,8 +55,7 @@ const WeeklySchedule = () => {
                         const height = endHourNum - startHourNum * hourHeight;
                         // const durationInHours = (endHourNum + endMinuteNum / 60) - (startHourNum + startMinuteNum / 60);
                         const durationInHours = endHourNum - startHourNum;
-                        console.log('Duration ', durationInHours+1);
-                        
+
                         return (
                             <View key={event.id} style={[styles.eventWrapper, { top, height }]}>
                                 {index !== 0 && (
@@ -64,18 +63,34 @@ const WeeklySchedule = () => {
                                         style={[
                                             styles.divider,
                                             {
-                                                backgroundColor: colors.border,
+                                                backgroundColor: colors.primary,
                                                 position: 'absolute',
                                                 top: 0,
-                                                left: -72,
+                                                left: -55,
                                                 right: 0,
+                                                width: '117%',
+                                                overflow: 'visible',
                                             },
                                         ]}
-                                    />
+                                    >
+                                        <View
+                                            style={{
+                                                position: 'absolute',
+                                                left: 0,
+                                                top: -4,
+                                                height: 10,
+                                                width: 10,
+                                                borderRadius: 5,
+                                                borderWidth: 2,
+                                                borderColor: colors.primary,
+                                                backgroundColor: colors.background,
+                                            }}
+                                        />
+                                    </View>
                                 )}
 
                                 {/* Event Card */}
-                                <View style={[styles.eventCard, { backgroundColor: event.color }]}>
+                                <View style={[styles.eventCard, { backgroundColor: event.color, marginTop: durationInHours == 2 ? 25 : durationInHours >= 3 ? 35 : 10 }]}>
                                     <CustomText
                                         varient="h6"
                                         fontFamily="Okra-Bold"
@@ -104,7 +119,6 @@ export default WeeklySchedule;
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
-        padding: 16,
     },
     header: {
         fontSize: 20,
@@ -114,7 +128,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         position: 'relative',
         minHeight: (endHour - startHour + 1) * hourHeight,
-        gap: 10
+        gap: 20
     },
     timeColumn: {
         justifyContent: 'flex-start',
@@ -139,7 +153,7 @@ const styles = StyleSheet.create({
         right: 0,
     },
     divider: {
-        height: 1,
+        height: 1.2,
         width: '100%',
         opacity: 1.5,
     },
